@@ -98,6 +98,9 @@ fi
 GOROOT=$cache/$ver/go export GOROOT
 PATH=$GOROOT/bin:$PATH
 
+# Install go
+cp -r $cache/$ver/go $build/goroot
+
 # Install gb
 gb_src="$build/vendor/src/github.com/constabulary/gb"
 if [[ -d "$gb_src" ]]
@@ -129,4 +132,5 @@ rm -rf $build/vendor/bin
 rm -rf $build/vendor/pkg
 
 mkdir -p $build/.profile.d
-echo 'PATH=$PATH:$HOME/bin' > $build/.profile.d/go.sh
+echo 'GOROOT=$HOME/goroot' > $build/.profile.d/go.sh
+echo 'PATH=$PATH:$HOME/bin:$GOROOT/bin' >> $build/.profile.d/go.sh
