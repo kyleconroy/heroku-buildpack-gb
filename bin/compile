@@ -99,6 +99,7 @@ GOROOT=$cache/$ver/go export GOROOT
 PATH=$GOROOT/bin:$PATH
 
 # Install go
+echo "Including go in application slug" | indent
 cp -r $cache/$ver/go $build/goroot
 
 # Install gb
@@ -132,5 +133,5 @@ rm -rf $build/vendor/bin
 rm -rf $build/vendor/pkg
 
 mkdir -p $build/.profile.d
-echo 'GOROOT=$HOME/goroot' > $build/.profile.d/go.sh
-echo 'PATH=$PATH:$HOME/bin:$GOROOT/bin' >> $build/.profile.d/go.sh
+echo 'export GOROOT=$HOME/goroot' > $build/.profile.d/go.sh
+echo 'export PATH=$PATH:$HOME/bin:$GOROOT/bin' >> $build/.profile.d/go.sh
