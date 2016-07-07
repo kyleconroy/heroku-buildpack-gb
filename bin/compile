@@ -111,7 +111,7 @@ else
     echo "-----> WARNING: vendored version of gb was not found!"
     echo "Downloading master version from https://github.com/constabulary/gb" | indent
     mkdir -p "$gb_src"
-    curl -sL https://github.com/constabulary/gb/archive/master.tar.gz \
+    curl -sL "https://codeload.github.com/constabulary/gb/tar.gz/v0.4.1" \
     | tar -C "$gb_src" --strip-components=1 -xzf -
 fi
 echo "Installing gb" | indent
